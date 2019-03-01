@@ -15,6 +15,7 @@ console.log(`your information has been saved saved`);
 
 }
 
+//FETCHING INFORMATION BY NAME 
 const fetchInfoByName=(name)=>{
 
     //making case sensitive
@@ -27,7 +28,18 @@ const fetchInfoByName=(name)=>{
 }
 
 
+
+//LISTING ALL INFORMATIONS
+const listAllInfo=()=>{
+  Info.find()
+  .then(info =>{
+      console.log(info);
+  })
+}
+
+
 module.exports={
     addInfo,
-    fetchInfoByName
+    fetchInfoByName,
+    listAllInfo
 }

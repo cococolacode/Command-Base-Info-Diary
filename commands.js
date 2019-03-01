@@ -1,6 +1,13 @@
+
+const mongoose=require('mongoose');
 const program= require('commander');
 const {prompt}=require('inquirer');
-const {addInfo,fetchInfoByName} = require('./server');
+const {addInfo,fetchInfoByName,listAllInfo} = require('./db/db-access');
+
+//DATABASE CONNECTION
+mongoose.connect('mongodb://localhost:27017/infoContainer',{useNewUrlParser:true});
+
+
 
 
 //user questions for adding information
@@ -53,7 +60,9 @@ program
 // });
 
 
-//ADDING IMFORMATION
+/*
+ADDING IMFORMATION
+*/
 program
 .command('add')
 .alias('a')
@@ -62,13 +71,24 @@ program
     prompt(question).then((answer)=> addInfo(answer));
 })
 
-
-//FINDING INFORMATION 
+/*
+FINDING INFORMATION 
+*/
 program
 .command('find <name>')
 .alias('f')
-.description('find all users')
+.description('find information by name')
 .action(name=>fetchInfoByName(name))
+
+
+/*
+LISTING ALL INFORMATIONS
+*/
+program
+  .command('list')
+  .alias('l')
+  .description('listing all informations')
+  .action(()=>listAllInfo())
 
 
 program.parse(process.argv);
