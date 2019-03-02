@@ -1,8 +1,15 @@
+#!/usr/bin/env node
 
 const mongoose=require('mongoose');
 const program= require('commander');
 const {prompt}=require('inquirer');
-const {addInfo,fetchInfoByName,listAllInfo} = require('./db/db-access');
+const {
+    addInfo,
+    fetchInfoByName,
+    listAllInfo,
+    updateInfo,
+    removeInfo
+} = require('./db/db-access');
 
 //DATABASE CONNECTION
 mongoose.connect('mongodb://localhost:27017/infoContainer',{useNewUrlParser:true});
@@ -49,17 +56,6 @@ program
 .description('information saving system')
 
 
-
-
-// program
-// .command('add <firstname> <lastname> <email> <phone> <address>')
-// .alias('a')
-// .description('add a user information')
-// .action((firstname,lastname,email,phone,address)=>{
-//       addUser({firstname,lastname,email,phone,address});
-// });
-
-
 /*
 ADDING IMFORMATION
 */
@@ -89,6 +85,30 @@ program
   .alias('l')
   .description('listing all informations')
   .action(()=>listAllInfo())
+
+
+  /*
+   DELETETING COMMAND
+  */
+ program
+ .command('remove <_id>')
+ .alias('d')
+ .description('deleting info by id')
+ .action(_id=>{
+     removeInfo(_id);
+ })
+
+
+//UPDATING INFORMATION
+program
+.command('update <_id>')
+.alias('u')
+.description('updating information')
+.action((_id)=>{
+    prompt(question).then(answer=>updateInfo(_id,answer));
+})
+
+
 
 
 program.parse(process.argv);

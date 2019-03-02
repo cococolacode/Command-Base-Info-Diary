@@ -1,0 +1,26 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'link' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 verbose linkPkg /home/bhupen/Documents/tasks/Nodejs/info-note
+5 silly gentlyRm /usr/local/lib/node_modules/info-book is being purged
+6 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/info-book
+7 verbose stack Error: EACCES: permission denied, symlink '/home/bhupen/Documents/tasks/Nodejs/info-diary' -> '/usr/local/lib/node_modules/info-book'
+8 verbose cwd /home/bhupen/Documents/tasks/Nodejs/info-note
+9 error Linux 4.15.0-45-generic
+10 error argv "/usr/bin/node" "/usr/bin/npm" "link"
+11 error node v8.10.0
+12 error npm  v3.5.2
+13 error path /home/bhupen/Documents/tasks/Nodejs/info-note
+14 error code EACCES
+15 error errno -13
+16 error syscall symlink
+17 error Error: EACCES: permission denied, symlink '/home/bhupen/Documents/tasks/Nodejs/info-info-diary' -> '/usr/local/lib/node_modules/info-book'
+17 error  { Error: EACCES: permission denied, symlink '/home/bhupen/Documents/tasks/Nodejs/info-info-diary' -> '/usr/local/lib/node_modules/info-book'
+17 error   errno: -13,
+17 error   code: 'EACCES',
+17 error   syscall: 'symlink',
+17 error   path: '/home/bhupen/Documents/tasks/Nodejs/info-diary',
+17 error   dest: '/usr/local/lib/node_modules/info-info-diary' }
+18 error Please try running this command again as root/Administrator.
+19 verbose exit [ -13, true ]

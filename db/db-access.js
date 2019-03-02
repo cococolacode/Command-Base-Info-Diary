@@ -27,19 +27,58 @@ const fetchInfoByName=(name)=>{
 
 }
 
+//DELETING INFORMATION
+const deleteInfo=(_id)=>{
+    Info.deleteOne({_id})
+    .then(info=>{
+        console.log("deleted info");
+    })
+}
+
 
 
 //LISTING ALL INFORMATIONS
 const listAllInfo=()=>{
   Info.find()
   .then(info =>{
-      console.log(info);
+      info.forEach( value=> {
+           console.log(value); 
+      });
+  
   })
 }
+
+//UPDATING INFORMATION
+const updateInfo=(_id,info)=>{
+Info.update({_id},info)
+.then(info=>{
+    console.log('your info has been udated')
+})
+}
+
+
+//Removing INFORMATION
+const removeInfo=(_id)=>{
+    Info.deleteOne({_id})
+    .then(info=>{
+        console.log('your info has been removed')
+    })
+    }
+
+//update users
+const updateUsers= (_id,name)=>{
+    Info.updateOne({_id},info)
+    .then(info =>{
+        console.info('info updated');
+    })
+}
+
 
 
 module.exports={
     addInfo,
     fetchInfoByName,
-    listAllInfo
+    listAllInfo,
+    updateInfo,
+    removeInfo
 }
